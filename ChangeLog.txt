@@ -1,0 +1,130 @@
+1.1.6
+
+- Finally fix issue with "Home -> Exit" !
+- Add a built-in editor to edit commands & words list
+  (command.txt and word.txt files)
+- Add eboot music from NeXuS
+  (see http://www.jamendo.com/en/artist/nexus)
+- Can now return back to Wifi menu 
+  (No need to restart pspirc to connect to another hotspot)
+- Bug fix in battery level display
+
+1.1.5
+
+- Fix IR keyboard issue with fw >= 3.80 for FAT PSP
+  (thanks to Angelo)
+- It has been tested sucessufully tested on:
+  . SLIM 3.90-m33 (thanks to Greg from psp-hacks)
+  . FAT 3.90-m33
+  . FAT 1.5 (addon for 3.90-m33)
+- Fix issue with virtual keyboard (speed)
+
+1.1.2
+
+- No more lag/issue with IR keyboard !
+- /notice message are now properly displayed
+- Add /clear command 
+
+1.1.1
+
+- Bug fix in the login menu 
+  (psp freeze if you enter key while script menu is selected)
+
+1.1.0
+
+- New graphics designed by Delight1 herself !
+- Display all user flags in the user list menu
+- IRC Channel name is now automatically added 
+  in command /TOPIC, /KICK and /MODE
+- Command /MSG is now supported (alias to /PRIVMSG)
+- Command/Text line history
+- Command completion in the console window !
+  (see readme for details)
+- You can now paste the name of an existing tab
+  in the console line
+- Bug fix in /TOPIC command 
+  (only the first word was taken into account)
+- Bug fix in the new input line feature 
+  (the text was messed up when line size was greater
+  to the width of console window)
+- Bug fix in the help menu 
+  (only first lines were displayed properly)
+
+
+1.0.7
+
+- Bug fix in danzeff keyboard 
+  (characters ? and # weren't mapped properly)
+- Bug fix on fw-3x, the PSP freeze when more than 7
+  tabs were opened simultaneously
+- New line edit mode in irc console
+
+1.0.6
+
+- Add all iso8859-1 characters in danzeff virtual keyboard
+- All text fonts are now compatible with iso8859-1 characters
+- Bug fix in IR keyboard .ini files with UTF8 specification
+  (for example mapping string such as "u+c3a0" didn't work properly)
+- New targus mapping with french characters mapped from ALT 1 up to ALT -
+  (see targus-include.ini file for more details)
+
+1.0.5
+
+- Support iso-8859-1 characters in IRC console 
+  (for West European languages)
+- bug fix
+
+1.0.4
+
+- New Search Channel menu with filter using regular expressions 
+- New menu for user permissions management (modes, ban, kick etc ...)
+- New options such as custom colors, distinct colors for each
+  user and time stamp. 
+- Add feature to run any custom scripts
+- Many server messages are now displayed with proper formatting.
+- New commands such as Banlist, Who and WhoIS
+- Display user permission in the user list
+- Display unread tab in tabs list (with '+' flag)
+- Add flags (red color) to see unread tabs 
+- Add option to write text like mIRC (beginning on bottom).
+- New commands in the Danzeff virtual keyboard
+- Add feature to retreive last input (useful when you want to
+  enter the same kind of command several times)
+- Add startup script feature
+- Display right nickname in private channel
+- Name Resolver is now blocking 
+  (hope that will fix name resolution issue)
+- Fix in the save log file (no more blank lines)
+- Close all tabs before to disconnect
+- Add second space key for Targus (mapping file)
+
+1.0.3
+
+- New graphics and eboot icons from HookBott !
+- No more blink when a message arrives on hidden channels
+- Use nickname instead of user name on startup
+- Text colors are now displayed (foreground and background)
+- Use custom text colors for your posts
+- Add splash screen on startup
+- Use new SDK wifi functions
+- Bug fix & Code cleaning
+
+1.0.2
+
+- New IRC engine (based on afkim)
+- Multiple channels support
+- Private messages support
+- New danzeff keyboard and mapping
+- Display Channel and user list 
+- Add tabs in the console window
+- New login menu with Nickname (previous login save 
+  data are not compatible with this version)
+- Handle password for IRC authentication
+- Increase the text input field in the console window
+- Add word list in the main IRC menu (let you choose
+  a word in a list, using word.txt file)
+- Code cleaning
+
+1.0.1
+
+- Intial release

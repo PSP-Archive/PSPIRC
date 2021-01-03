@@ -1,0 +1,6 @@
+PSPIRC : IRC Client for PSP 
+
+  Ludovic Jacomme (zx81.zx81@gmail.com)
+
+  Based on the IRC engine written by Danzel
+

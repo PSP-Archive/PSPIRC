@@ -1,0 +1,91 @@
+#
+# Copyright (C) 2006 Ludovic Jacomme (ludovic.jacomme@gmail.com)
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+TARGET = pspirc
+PSPSDK = $(shell psp-config --pspsdk-path)
+PSPBIN = $(shell psp-config --psp-prefix)/bin
+SDL_CONFIG = $(PSPBIN)/sdl-config
+OBJS= psp_battery.o \
+      psp_loadutil.o \
+      psp_menu.o \
+      psp_menu_user.o \
+      psp_menu_tab.o \
+      psp_menu_chantab.o \
+      psp_menu_chanlist.o \
+      psp_menu_config.o \
+      psp_menu_mode.o \
+      psp_help.o \
+      psp_global.o \
+      psp_editor.o \
+      psp_login.o \
+      psp_console.o \
+      psp_main.o  \
+      psp_fmgr.o \
+      psp_wifi.o psp_sdl.o psp_font.o psp_danzeff.o \
+      psp_irkeyb.o \
+      psp_irc.o regex.o \
+      irc_thread.o \
+
+DEFAULT_CFLAGS = $(shell $(SDL_CONFIG) --cflags)
+PSP_FW_VERSION=15
+PSPIRC_VERSION=1.1.6-fw15
+
+INCDIR = 
+CFLAGS = $(DEFAULT_CFLAGS) -O2 -Wall -DPSP \
+ -funroll-loops -ffast-math -fomit-frame-pointer \
+ -fno-strength-reduce -finline-functions \
+ -fsingle-precision-constant \
+-DUSE_PSP_IRKEYB  -DPSPIRC_VERSION=\"$(PSPIRC_VERSION)\" \
+-DNO_STDIO_REDIRECT
+# -DDEBUG
+
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
+ASFLAGS = $(CFLAGS) -c
+
+LIBDIR =
+LDFLAGS =
+LIBS += -lpspirkeyb  -lpspwlan -lpsppower -lSDL_image -lSDL -lpng -ljpeg -lpspaudio -lpspgu -lpsphprm -lz -lm -lstdc++
+
+
+EXTRA_TARGETS = EBOOT.PBP
+PSP_EBOOT_TITLE = PSPIRC-v$(PSPIRC_VERSION)
+PSP_EBOOT_ICON= pspirc.png
+PSP_EBOOT_SND0= pspirc.at3
+PSP_EBOOT_PIC1 = pspirc-pic.png
+
+include $(PSPSDK)/lib/build.mak
+
+all: SCEkxploit
+
+.c.o:
+	$(CC) $(CFLAGS) $(OPTIM_CFLAGS) -c -o $@ $<
+
+regex.o: regex.c
+	$(CC) $(CFLAGS) -O2 -G0 -c -o $@ $<
+
+install: all
+	@mkdir -p /media/disk/psp/game150/__SCE__pspirc/
+	@mkdir -p /media/disk/psp/game150/%__SCE__pspirc/
+	cp __SCE__pspirc/EBOOT.PBP /media/disk/psp/game150/__SCE__pspirc/
+	cp %__SCE__pspirc/EBOOT.PBP /media/disk/psp/game150/%__SCE__pspirc/
+
+realclean:
+	/bin/rm -f $(OBJS) EBOOT.PBP PARAM.SFO
+	/bin/rm -rf __SCE__pspirc %__SCE__pspirc
+
+ctags:
+	ctags *[chpyl]
